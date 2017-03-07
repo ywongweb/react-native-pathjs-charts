@@ -25,6 +25,8 @@ import Axis from './Axis'
 const Bar = require('paths-js/bar')
 import 'babel-polyfill'
 
+const X_AXIS_TEXT_OFFSET = 25; // HACK: center text labels on the x axis
+
 export default class BarChart extends Component {
 
   static defaultProps = {
@@ -132,7 +134,7 @@ export default class BarChart extends Component {
                         <G x={options.margin.left} y={options.margin.top}>
                         <Text fontFamily={textStyle.fontFamily}
                         fontSize={textStyle.fontSize} fontWeight={textStyle.fontWeight} fontStyle={textStyle.fontStyle}
-                        fill={textStyle.fill} x={c.line.centroid[0]} y={chartArea.y.min} rotate={45} textAnchor="middle">{c.item.name}</Text></G>
+                        fill={textStyle.fill} x={c.line.centroid[0] - X_AXIS_TEXT_OFFSET} y={chartArea.y.min} textAnchor="middle">{c.item.name}</Text></G>
                         :null}
                 </G>
             )
